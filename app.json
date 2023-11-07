@@ -1,5 +1,5 @@
 {
-	"name": "RashqZe",
+	"name": "TempMail",
 	"description": "A TeleGramBot to send messages secretly!",
 	"logo": "https://telegra.ph/file/5116db79f852db113875c.jpg",
 	"keywords": [
@@ -8,7 +8,7 @@
 		"python",
 		"telethon"
 	],
-	"repository": "https://github.com/Dev-senzir/dgdhdd",
+	"repository": "https://github.com/Source-Ze/temp",
     "env": {
         "TG_BOT_TOKEN": {
             "description": "Your Telegram Bot Token from @BotFather",
