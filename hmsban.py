@@ -1,40 +1,35 @@
-from pyrogram import Client
-import pyrogram
-import requests
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-api_id = 13966124  # app id الخاص بك.
-api_hash = "ffb60460dd6a3e4e087f8b29d3179059"  # app hash
-token="6740821383:AAEBcDxvo_jbAZv2R6yv4hspwBUkKnQVTk0"
-# Create a new bot session
-app = Client("gmm", api_id, api_hash, bot_token=token)
+# تهيئة البوت
+api_id = 27477919
+api_hash = "b25cce1727f6d33d41d9e00e3ed62583"
+bot_token = "6740821383:AAEYFkVfDlK_OHfTxeweHm4GDHvkcovOY34"
 
-# Add your bot's logic here
-@app.on_chat_member_updated()
-def handle_message(lient, update):
-    if update.old_chat_member:
-        user_id = update.from_user.id
-        chat_id = update.chat.id
-        url = f"https://api.telegram.org/bot{token}/kickChatMember"
-        params = {
-         "chat_id": chat_id,
-         "user_id": user_id
-         }
+app = Client("my_bot", api_id=api_id, api_hash=api_hash,  bot_token=bot_token)
 
-        response = requests.get(url, params=params)
+
+# التعامل مع الرسائل الواردة
 @app.on_message(filters.command("start"))
-def start(client, message):
-    reply_markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("𝙎 .࿆𝙉 .࿆𝙍 </>", url="https://t.me/programer_senzir")],
-        [InlineKeyboardButton("قناة البوت", url="https://t.me/def_Zoka")]
-    ])
+def start_command(client, message):
+    # إنشاء زرين انلاين
+    keyboard = InlineKeyboardMarkup(
+        [[
+            InlineKeyboardButton("زر أول", callback_data="button1"),
+            InlineKeyboardButton("زر ثاني", callback_data="button2")
+        ]]
+    )
     message.reply_text(
-        "اهلين فيك في بوت حبيب المغادرين من القنوات 🦋\n\n"
-        "كل ماعليك فعله اضافة البوت ادمن في القناه وسيتم التفعيل تلقائيا وسيتم حظر اي شخص غادر من قناتك ♡",
-        reply_markup=reply_markup
+        "مرحباً بك في البوت!",
+        reply_markup=keyboard
     )
 
 
+# التعامل مع الاستجابة من الأزرار الانلاين
+@app.on_callback_query()
+def button_click(client, callback_query):
+    if callback_query.data == "button1":
+        callback_query.answer("أنت اخترت الزر الأول")
+    elif callback_query.data == "button2":
+        callback_query.answer("أنت اخترت الزر الثاني")
 
-app.run()
