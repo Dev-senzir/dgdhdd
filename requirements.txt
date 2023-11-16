@@ -1,5 +1,5 @@
 certifi
 pyrogram
-telebot
+requests
 asyncio
 
