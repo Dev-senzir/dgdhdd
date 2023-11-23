@@ -1,5 +1,5 @@
-certifi
 pyrogram
 requests
 asyncio
+tgcrypto
 random
