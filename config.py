@@ -1,9 +1,5 @@
 import os
 
-
-class Config(object):
-    TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
-
-    APP_ID = int(os.environ.get("APP_ID", 27477919))
-
-    API_HASH = os.environ.get("API_HASH", "b25cce1727f6d33d41d9e00e3ed62583")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "6634084600:AAELYN64BKtF62w6rWyBprgQfa9wACFtaVo")
+BOT_USERNAME = os.environ.get("BOT_USERNAME", "seeeeeee255bot")
+BOT_CHANNEL = os.environ.get("BOT_CHANNEL", "def_Zoka")
