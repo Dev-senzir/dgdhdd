@@ -1,27 +1,30 @@
 {
-	"name": "RashqZe",
-	"description": "A TeleGramBot to send messages secretly!",
-	"logo": "https://telegra.ph/file/5116db79f852db113875c.jpg",
+	"name": "BenViews",
+	"description": "A Telegram Bot to increase channels' posts views!",
+	"logo": "https://telegra.ph/file/1a227f88bd5661c0609f2.png",
 	"keywords": [
 		"telegram",
 		"bot",
 		"python",
-		"telethon"
+		"pyrogram"
 	],
 	"repository": "https://github.com/Dev-senzir/dgdhdd",
     "env": {
-        "TG_BOT_TOKEN": {
+        "BOT_TOKEN": {
             "description": "Your Telegram Bot Token from @BotFather",
-            "value": ""
+            "value": "",
+            "required": true
         },
-        "API_HASH": {
-            "description": "Your API Hash from my.telegram.org",
-            "value": ""
+	"BOT_USERNAME": {
+            "description": "Your Telegram Bot Username without @",
+            "value": "",
+            "required": true
         },
-        "APP_ID": {
-            "description": "Your APP ID from my.telegram.org",
-            "value": ""
-	   }
+	"BOT_CHANNEL": {
+            "description": "Your Telegram Bot Force subscription channel without @",
+            "value": "",
+	    "required": true
+	}
 	},
 	"buildpacks": [
 		{
@@ -29,6 +32,3 @@
 		}
 	]
 }
-
-
-
