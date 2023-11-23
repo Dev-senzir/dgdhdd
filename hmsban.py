@@ -1,35 +1,34 @@
 from pyrogram import Client, filters
+import random
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import os
 
-# تهيئة البوت
-api_id = 27477919
+api_id = "27477919"
 api_hash = "b25cce1727f6d33d41d9e00e3ed62583"
-bot_token = "6740821383:AAEYFkVfDlK_OHfTxeweHm4GDHvkcovOY34"
+bot_token = "6634084600:AAELYN64BKtF62w6rWyBprgQfa9wACFtaVo"
 
-app = Client("my_bot", api_id=api_id, api_hash=api_hash,  bot_token=bot_token)
+bot = Client("programer senzir", api_id, api_hash, bot_token=bot_token)
 
+@bot.on_message(filters.command("senzir"))
+def send_random_text(_, message):
+    random_texts = ["Card Number: 5204039030895628\nFull Name: Miranda Sweeney\nCVV: 661\nPin: 5868\n", "كيف حالك؟", "أتمنى لك يومًا سعيدًا!", "ماذا أفعل لمساعدتك؟", "كسمك"]
 
-# التعامل مع الرسائل الواردة
-@app.on_message(filters.command("start"))
-def start_command(client, message):
-    # إنشاء زرين انلاين
-    keyboard = InlineKeyboardMarkup(
-        [[
-            InlineKeyboardButton("زر أول", callback_data="button1"),
-            InlineKeyboardButton("زر ثاني", callback_data="button2")
-        ]]
-    )
+    random_text = random.choice(random_texts)
+
+    message.reply_text(random_text)
+    
+@bot.on_message(filters.command("start"))
+def start(client, message):
+    reply_markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("𝙎 .࿆𝙉 .࿆𝙍 </>", url="https://t.me/programer_senzir")],
+        [InlineKeyboardButton("𝗖𝗛:", url="https://t.me/def_Zoka")]
+    ])
     message.reply_text(
-        "مرحباً بك في البوت!",
-        reply_markup=keyboard
+        "اهلا بك عزيزي 🤗\n\n"
+        "انا بوت اقوم بارسال فيزات خاصيًا لهيركو لانشاء فيزا قم بارسال امر /senzir ♡",
+        reply_markup=reply_markup
     )
 
 
-# التعامل مع الاستجابة من الأزرار الانلاين
-@app.on_callback_query()
-def button_click(client, callback_query):
-    if callback_query.data == "button1":
-        callback_query.answer("أنت اخترت الزر الأول")
-    elif callback_query.data == "button2":
-        callback_query.answer("أنت اخترت الزر الثاني")
-
+print("برمجة وتطوير @programer_senzir 🇸🇾")
+bot.run()
